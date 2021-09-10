@@ -41,14 +41,14 @@ function App() {
     }
   };
 
-  const addTodoButton = (e: any) => {
-    showLastTodo();
-    Notify(e);
-  };
-
   const changeHandle = (e: any) => {
     let word = e.target.value;
     setTodo(word);
+  };
+
+  const addTodoButton = (e: any) => {
+    showLastTodo();
+    Notify(e);
   };
 
   const keyDownHandle = (event: any) => {
