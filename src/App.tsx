@@ -41,6 +41,28 @@ function App() {
     }
   };
 
+  const addTodoButton = (e: any) => {
+    showLastTodo();
+    Notify(e);
+  };
+
+  const changeHandle = (e: any) => {
+    let word = e.target.value;
+    setTodo(word);
+  };
+
+  const keyDownHandle = (event: any) => {
+    if (event.key === "Enter") {
+      showLastTodo();
+      Notify(event);
+    }
+  };
+
+  const closedTodoButton = (e: any) => {
+    setTodo("");
+    setFlag(false);
+  };
+
   return (
     <Layout>
       <div className="row write-todo-row">
@@ -50,24 +72,10 @@ function App() {
             <InputGroup className="mt-5 ">
               <FormControl
                 placeholder="The Last Todo"
-                onChange={(e) => {
-                  let word = e.target.value;
-                  setTodo(word);
-                }}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    showLastTodo();
-                    Notify(event);
-                  }
-                }}
+                onChange={changeHandle}
+                onKeyDown={keyDownHandle}
               />
-              <Button
-                onClick={(event) => {
-                  showLastTodo();
-                  Notify(event);
-                }}
-                variant="info"
-              >
+              <Button onClick={addTodoButton} variant="info">
                 Sure !
               </Button>
             </InputGroup>
@@ -86,13 +94,7 @@ function App() {
             </div>
           </Container>
           <div className="col">
-            <Button
-              className="write-todo-btn"
-              onClick={(event) => {
-                setTodo("");
-                setFlag(false);
-              }}
-            >
+            <Button className="write-todo-btn" onClick={closedTodoButton}>
               X
             </Button>
           </div>
