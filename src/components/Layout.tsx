@@ -2,13 +2,13 @@ import React from "react";
 import Header from "./Header";
 
 interface LayoutProps {
-  children?: React.ReactNode | React.ReactNode[];
+  children?: React.ReactNode;
 }
 
 const Layout: React.StatelessComponent<LayoutProps> = ({ children }) => {
   return (
     <>
-      <Header projectName={"Last Todo"} />
+      <Header projectName="Last Todo" />
       {children}
     </>
   );

@@ -5,8 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 interface IProps {
   todo: string;
-  setTodo: any;
-  setFlag: any;
+  setTodo: React.Dispatch<React.SetStateAction<string>>;
+  setFlag: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 toast.configure();
@@ -16,47 +16,39 @@ const Todo: React.FunctionComponent<IProps> = ({ todo, setTodo, setFlag }) => {
       setFlag(true);
     }
   };
-  const Notify = (e: any) => {
+
+  const Notify = () => {
     if (todo.length === 0) {
       toast.error("Todo oluşturulamadı !!!", {
         position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
+        autoClose: 3000,
+        pauseOnHover: false,
       });
     } else if (todo.length >= 2) {
       toast.success("Todo başarılı bir şekilde oluşturuldu", {
         position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
+        autoClose: 3000,
+        pauseOnHover: false,
       });
     } else {
       return null;
     }
   };
 
-  const changeHandle = (e: any) => {
-    let word = e.target.value;
-    setTodo(word);
+  const changeHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTodo(event.target.value);
   };
 
-  const keyDownHandle = (event: any) => {
+  const keyDownHandle = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
       showLastTodo();
-      Notify(event);
+      Notify();
     }
   };
 
-  const addTodoButton = (e: any) => {
+  const addTodoButton = () => {
     showLastTodo();
-    Notify(e);
+    Notify();
   };
 
   return (

@@ -3,8 +3,8 @@ import { Container, Button } from "react-bootstrap";
 
 interface IProps {
   todo: string;
-  setTodo: any;
-  setFlag: any;
+  setTodo: React.Dispatch<React.SetStateAction<string>>;
+  setFlag: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const VisibleLastTodo: React.FunctionComponent<IProps> = ({
@@ -12,7 +12,7 @@ const VisibleLastTodo: React.FunctionComponent<IProps> = ({
   setTodo,
   setFlag,
 }) => {
-  const closedTodoButton = (e: any) => {
+  const closedTodoButton = () => {
     setTodo("");
     setFlag(false);
   };
