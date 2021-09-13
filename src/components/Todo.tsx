@@ -11,12 +11,14 @@ interface IProps {
 
 toast.configure();
 const Todo: React.FunctionComponent<IProps> = ({ todo, setTodo, setFlag }) => {
+  // If the value entered in the input passes validation, it changes the value of the flag
   const showLastTodo = () => {
     if (todo.length > 0) {
       setFlag(true);
     }
   };
 
+  // It provides notification when it is written incorrectly or correctly
   const Notify = () => {
     if (todo.length === 0) {
       toast.error("Todo oluşturulamadı !!!", {
@@ -35,10 +37,12 @@ const Todo: React.FunctionComponent<IProps> = ({ todo, setTodo, setFlag }) => {
     }
   };
 
+  // Reads and writes the value entered from the input
   const changeHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(event.target.value);
   };
 
+  // It allows the value entered from the input to be sent by 'enter'
   const keyDownHandle = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
       showLastTodo();
@@ -46,6 +50,7 @@ const Todo: React.FunctionComponent<IProps> = ({ todo, setTodo, setFlag }) => {
     }
   };
 
+  // allows the saved value to be displayed on the screen after clicking the button
   const addTodoButton = () => {
     showLastTodo();
     Notify();

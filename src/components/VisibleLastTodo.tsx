@@ -12,6 +12,7 @@ const VisibleLastTodo: React.FunctionComponent<IProps> = ({
   setTodo,
   setFlag,
 }) => {
+  // allows to close the last todo so that a new todo can be entered
   const closedTodoButton = () => {
     setTodo("");
     setFlag(false);

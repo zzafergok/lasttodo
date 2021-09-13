@@ -10,6 +10,7 @@ function App() {
 
   return (
     <Layout>
+      {/* If the flag is false, it displays the screen for entering the last todo */}
       {flag ? (
         <VisibleLastTodo todo={todo} setTodo={setTodo} setFlag={setFlag} />
       ) : (
