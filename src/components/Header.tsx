@@ -10,7 +10,7 @@ const Header: React.StatelessComponent<IProps> = ({ projectName }) => {
     <>
       <Navbar bg="dark" variant="dark">
         <Container className="justify-content-center">
-          <Navbar.Brand href="#home">{projectName}</Navbar.Brand>
+          <Navbar.Brand href="/">{projectName}</Navbar.Brand>
         </Container>
       </Navbar>
     </>
